@@ -5,7 +5,6 @@ import { User } from '../users/user.entity';
 import { getRepositoryToken } from '@nestjs/typeorm';
 import { Repository, DeleteResult } from 'typeorm';
 
-/* ---------- helpers ---------- */
 const deleteOk: DeleteResult = { raw: {}, affected: 1 };
 const deleteZero: DeleteResult = { raw: {}, affected: 0 };
 
