@@ -43,7 +43,7 @@ Create a `.env` file in the root directory:
 ```env
 DB_HOST=localhost
 DB_PORT=3306
-DB_USERNAME=nest
+DB_USERNAME=root
 DB_PASSWORD=your_password
 DB_DATABASE=nest_events
 ```
@@ -56,18 +56,17 @@ We create the database manually:
 CREATE DATABASE nest_events;
 ```
 
-After running the application, all the tables will be created automatically. The invitees field is a list of user IDs.Insert users manually in MySQL for testing:
-
-```sql
-INSERT INTO user (name) VALUES ('Alice'), ('Bob'), ('Charlie');
-```
-
 ---
 
 ## Run the Application
 
 ```bash
 npm run start:dev
+```
+p.s. After running the application, all the tables will be created automatically. The invitees field is a list of user IDs.Insert users manually in MySQL for testing:
+
+```sql
+INSERT INTO user (name) VALUES ('Alice'), ('Bob'), ('Charlie');
 ```
 
 Visit: [http://localhost:3000](http://localhost:3000)
