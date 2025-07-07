@@ -63,7 +63,7 @@ export class EventsService {
     for (const event of events) {
       if (!current) {
         current = { ...event };
-        current.invitees = [...event.invitees];
+        current.invitees = [...(event.invitees || [])];
         continue;
       }
 
@@ -76,12 +76,12 @@ export class EventsService {
           Math.max(new Date(current.endTime).getTime(), new Date(event.endTime).getTime()),
         );
 
-        current.title += ' | ' + event.title;
+        current.title += ', ' + event.title;
         current.description = (current.description ?? '') + ' ' + (event.description ?? '');
         current.status = this.mergeStatus(current.status, event.status);
         current.invitees = Array.from(
           new Map(
-            [...current.invitees, ...event.invitees].map((user) => [user.id, user]),
+            [...(current.invitees || []), ...(event.invitees || [])].map((user) => [user.id, user]),
           ).values(),
         );
 
@@ -92,7 +92,7 @@ export class EventsService {
         const saved = await this.eventRepository.save(current);
         mergedEvents.push(saved);
         current = { ...event };
-        current.invitees = [...event.invitees];
+        current.invitees = [...(event.invitees || [])];
       }
     }
 
