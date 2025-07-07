@@ -1,4 +1,4 @@
-# 📅 Event Management API with NestJS
+# Event Management API with NestJS
 
 This project extends the official [NestJS TypeScript Starter](https://github.com/nestjs/typescript-starter) by adding an **Event Management** feature that includes task-like events, invitees (users), and automatic merging of overlapping time slots.
 
@@ -27,8 +27,7 @@ This project extends the official [NestJS TypeScript Starter](https://github.com
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/<your-username>/nestjs-event-manager.git
-cd nestjs-event-manager
+git clone https://github.com/HungJuiChen/Ra_Labs_Assignment.git
 ```
 
 ### 2. Install Dependencies
@@ -44,26 +43,23 @@ Create a `.env` file in the root directory:
 ```env
 DB_HOST=localhost
 DB_PORT=3306
-DB_USERNAME=root
+DB_USERNAME=nest
 DB_PASSWORD=your_password
 DB_DATABASE=nest_events
 ```
 
 ### 4. Prepare the MySQL Database
 
-You can create the database manually:
+We create the database manually:
 
 ```sql
 CREATE DATABASE nest_events;
 ```
 
-Or with Docker:
+After running the application, all the tables will be created automatically. The invitees field is a list of user IDs.Insert users manually in MySQL for testing:
 
-```bash
-docker run --name mysql-nest \
-  -e MYSQL_ROOT_PASSWORD=your_password \
-  -e MYSQL_DATABASE=nest_events \
-  -p 3306:3306 -d mysql:8
+```sql
+INSERT INTO user (name) VALUES ('Alice'), ('Bob'), ('Charlie');
 ```
 
 ---
@@ -89,7 +85,7 @@ Visit: [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ### Unit & Integration Tests
 
@@ -103,11 +99,20 @@ npm run test
 npm run test:e2e
 ```
 
-> ⚠️ Ensure no server is already running on port 3000 when executing `test:e2e`.
+> Ensure no server is already running on port 3000 when executing `test:e2e`.
+
+
+### Coverage Tests
+
+```bash
+npm run test:cov
+```
+
+
 
 ---
 
-## 📡 curl Examples
+## curl Examples
 
 ### Create Event
 
